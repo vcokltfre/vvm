@@ -1,4 +1,4 @@
-use crate::{Instruction, Program};
+use crate::{Instruction, Program, optimise};
 
 #[derive(Debug, Clone, PartialEq)]
 pub enum Value {
@@ -7,6 +7,7 @@ pub enum Value {
     Float(f64),
     Bool(bool),
     String(String),
+    Array(Vec<Value>),
 }
 
 impl Value {
@@ -106,12 +107,21 @@ pub struct VM {
 impl VM {
     pub fn new(program: Program) -> Self {
         VM {
-            program,
+            program: optimise(&program),
             ptr: 0,
             call_stack: Vec::new(),
             data_stack: Vec::new(),
             memory: std::collections::HashMap::new(),
             native_handlers: std::collections::HashMap::new(),
+        }
+    }
+
+    pub fn call_native(&mut self, name: &str) {
+        if let Some(&handler) = self.native_handlers.get(name) {
+            handler(self);
+        } else {
+            eprintln!("Error: Undefined native handler '{}'", name);
+            std::process::exit(1);
         }
     }
 

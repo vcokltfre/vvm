@@ -56,6 +56,7 @@ pub fn parse(source: &str) -> Result<Vec<u8>, String> {
             }
             "PUSHS" => {
                 bytecode.push(OP_PUSH_STRING);
+                let val = val.replace("\\n", "\n");
                 let imm_bytes = val.as_bytes();
                 let len = imm_bytes.len() as u32;
                 bytecode.extend_from_slice(&len.to_le_bytes());
