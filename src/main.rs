@@ -6,6 +6,11 @@ fn run(file: &String) {
     let data = std::fs::read(file).expect("Failed to read input file");
     let prog = Program::from_bytecode(data).expect("Failed to parse bytecode");
     let mut vm = VM::new(prog);
+
+    vm.register_native_handler("debug", |vm| {
+        vm.debug();
+    });
+
     vm.run();
 }
 

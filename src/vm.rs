@@ -115,6 +115,14 @@ impl VM {
         }
     }
 
+    pub fn debug(&self) {
+        println!("VM State:");
+        println!("Instruction Pointer: {}", self.ptr);
+        println!("Data Stack: {:?}", self.data_stack);
+        println!("Call Stack: {:?}", self.call_stack);
+        println!("Memory: {:?}", self.memory);
+    }
+
     pub fn pop(&mut self) -> Value {
         match self.data_stack.pop() {
             Some(v) => v,
