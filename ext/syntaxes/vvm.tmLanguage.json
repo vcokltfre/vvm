@@ -1,0 +1,45 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "vvm",
+  "patterns": [
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#calls"
+    },
+    {
+      "include": "#comments"
+    }
+  ],
+  "repository": {
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.vvm",
+          "match": "\\b(EXIT|EXIT_IMM|PUSHI|PUSHU|PUSHF|PUSHB|PUSHS|POP|DUP|SWAP|ADD|ADDI|ADDU|ADDF|SUB|SUBI|SUBU|SUBF|MUL|MULI|MULU|MULF|DIV|DIVI|DIVU|DIVF|MOD|MODI|MODU|EXPI|EXPU|EXPF|LOAD|LOAD_IMM|STORE|STORE_IMM|FREE|FREE_IMM|CMPEQ|CMPNE|CMPGT|CMPLT|CMPGE|CMPLE|RET|LABEL)\\b"
+        }
+      ]
+    },
+    "numbers": {
+      "name": "constant.numeric.vvm",
+      "match": "\\b(\\d+(\\.\\d+)?)\\b"
+    },
+    "calls": {
+      "name": "entity.name.function.vvm",
+      "match": "(JMP|JMPIF|CALL|CALLNATIVE) ([a-zA-Z_][a-zA-Z0-9_]*)\\b"
+    },
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.hash.vvm",
+          "match": "#.*$"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.vvm"
+}

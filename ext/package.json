@@ -1,0 +1,36 @@
+{
+  "name": "vvm",
+  "displayName": "VVM",
+  "description": "vcokltfre/vvm syntax support",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": "https://github.com/vcokltfre/vvm",
+  "engines": {
+    "vscode": "^1.84.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "vvm",
+        "aliases": [
+          "vvm",
+          "VVM"
+        ],
+        "extensions": [
+          ".vvm"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "vvm",
+        "scopeName": "source.vvm",
+        "path": "./syntaxes/vvm.tmLanguage.json"
+      }
+    ]
+  }
+}
