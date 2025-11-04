@@ -1,8 +1,10 @@
 use std::collections::HashMap;
 
-use crate::Program;
+use crate::{Program, optimise};
 
 pub fn disasm(program: Program) -> String {
+    let program = optimise(&program);
+
     let mut labels = HashMap::new();
 
     program.labels.iter().for_each(|(name, addr)| {

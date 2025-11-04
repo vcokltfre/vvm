@@ -73,7 +73,7 @@ impl Display for Instruction {
             Instruction::PushUInt(imm) => write!(f, "PUSHU {}", imm),
             Instruction::PushFloat(imm) => write!(f, "PUSHF {}", imm),
             Instruction::PushBool(imm) => write!(f, "PUSHB {}", imm),
-            Instruction::PushString(imm) => write!(f, "PUSHS \"{}\"", imm),
+            Instruction::PushString(imm) => write!(f, "PUSHS {}", imm.replace("\n", "\\n")),
             Instruction::Pop => write!(f, "POP"),
             Instruction::Dup => write!(f, "DUP"),
             Instruction::Swap => write!(f, "SWAP"),
